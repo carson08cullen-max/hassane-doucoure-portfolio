@@ -1,0 +1,38 @@
+name: Import original portfolio
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/import-portfolio.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Mirror the public portfolio
+        run: |
+          mkdir -p mirror
+          wget --mirror --page-requisites --convert-links --adjust-extension --no-parent \
+            --domains hassane-doucoure.carson66.chatgpt.site \
+            --directory-prefix mirror \
+            https://hassane-doucoure.carson66.chatgpt.site/
+          cp -a mirror/hassane-doucoure.carson66.chatgpt.site/. .
+          rm -rf mirror
+          cat > vercel.json <<'JSON'
+          {
+            "cleanUrls": true,
+            "trailingSlash": false
+          }
+          JSON
+      - name: Commit imported site
+        run: |
+          git config user.name "Portfolio Import"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git commit -m "Import original Hassane Doucoure portfolio"
+          git push
