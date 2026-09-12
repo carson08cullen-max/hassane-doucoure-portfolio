@@ -49,4 +49,25 @@
   else placeCarilionVideo();
   setTimeout(placeCarilionVideo, 500);
 })();
+</script><script>
+(function () {
+  function placeGraduationSpeech() {
+    var trigger = Array.from(document.querySelectorAll("button")).find(function (button) {
+      return button.textContent.indexOf("Graduation speech") !== -1;
+    });
+    if (!trigger) return;
+    var item = trigger.closest(".resume-story-item");
+    var panel = item && item.querySelector('[role="region"]');
+    if (!panel || panel.querySelector("#graduation-speech-video")) return;
+    panel.insertAdjacentHTML("beforeend", '<div class="pt-0 pb-4 resume-story-content"><div class="resume-media-grid"><figure class="resume-media-card wide-media" id="graduation-speech-video"><iframe src="https://www.tiktok.com/player/v1/7646468585338064159?autoplay=0&music_info=1&description=1" title="Hassane Doucoure graduation speech" allow="fullscreen; autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy" style="width:100%;height:740px;border:0;border-radius:16px"></iframe><figcaption><b>Graduation Speech</b><span>Hassane Doucoure’s Class of 2026 graduation speech.</span></figcaption></figure></div></div>');
+  }
+  document.addEventListener("click", function (event) {
+    var button = event.target.closest && event.target.closest("button");
+    if (button && button.textContent.indexOf("Graduation speech") !== -1) {
+      setTimeout(placeGraduationSpeech, 100);
+    }
+  });
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", function(){ setTimeout(placeGraduationSpeech, 1200); });
+  else setTimeout(placeGraduationSpeech, 1200);
+})();
 </script>
