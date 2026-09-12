@@ -1,0 +1,1 @@
+Upload the extracted VCOM media files into this folder. This placeholder can be removed after upload.
