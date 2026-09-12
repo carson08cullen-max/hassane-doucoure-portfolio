@@ -49,4 +49,20 @@
   else placeCarilionVideo();
   setTimeout(placeCarilionVideo, 500);
 })();
+</script><script>
+(function () {
+  function openCarelabFromLink() {
+    if (window.location.hash !== "#carelab") return;
+    setTimeout(function () {
+      var section = document.getElementById("carelab");
+      if (!section) return;
+      var trigger = section.querySelector("button");
+      if (trigger && trigger.getAttribute("aria-expanded") !== "true") trigger.click();
+      section.scrollIntoView({behavior:"smooth",block:"start"});
+    }, 700);
+  }
+  window.addEventListener("hashchange", openCarelabFromLink);
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", openCarelabFromLink);
+  else openCarelabFromLink();
+})();
 </script>
