@@ -1,10 +1,7 @@
 name: Import original portfolio
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - ".github/workflows/import-portfolio.yml"
+  workflow_dispatch:
 
 permissions:
   contents: write
