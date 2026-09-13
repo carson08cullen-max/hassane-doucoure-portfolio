@@ -1,6 +1,7 @@
 (function () {
   var wsetUrl = "https://wset.com/sports/full-court-press/cave-springs-knight-balances-basketball-debate-and-track-while-chasing-one-more-title-february-2026";
   var wsetImage = "https://wset.com/resources/media2/16x9/588/800/5x0/80/83ee9dc8-0281-4c7b-bad8-78e31b380d52-HASSAN5.jpg";
+  var wsetVideo = "https://harvest-media-clips.sinclairstoryline.com/WSET/2026-02-21T04:31:37.834Z/Live-DVR/548fa2e5-fcd3-4669-aa84-88ab2cae69ac/mp4/index.mp4";
 
   function storyItem(label) {
     var trigger = Array.from(document.querySelectorAll(".resume-story-trigger")).find(function (button) {
@@ -47,7 +48,7 @@
       grid.prepend(card);
     }
     card.id = "wset-full-court-press";
-    card.innerHTML = '<a class="wset-feature-link" href="' + wsetUrl + '" target="_blank" rel="noreferrer"><img src="' + wsetImage + '" alt="Hassane Doucoure featured by WSET for basketball, debate, track, and leadership"><span>Watch the WSET feature <b>↗</b></span></a><figcaption><b>WSET Full Court Press: A Knight\'s Tale</b><span>WSET profiles how I balanced basketball, policy debate, track, academics, and the Cave Spring Knight honor.</span></figcaption>';
+    card.innerHTML = '<video controls playsinline preload="metadata" poster="' + wsetImage + '"><source src="' + wsetVideo + '" type="video/mp4">Your browser cannot play this video. <a href="' + wsetUrl + '" target="_blank" rel="noreferrer">Watch it on WSET</a>.</video><figcaption><b>WSET Full Court Press: A Knight\'s Tale</b><span>WSET profiles how I balanced basketball, policy debate, track, academics, and the Cave Spring Knight honor. <a href="' + wsetUrl + '" target="_blank" rel="noreferrer">Open the original WSET story ↗</a></span></figcaption>';
   }
 
   function repairPage() {
